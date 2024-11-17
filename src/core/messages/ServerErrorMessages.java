@@ -17,4 +17,8 @@ class ServerErrorMessages {
      * This error message if user choose number not in the menu
      */
     public static final String outOfMenuChoices = "Your choice is not in the menu\nplease choose correct number";
+
+    public static final String existInDataBase = "User already registered";
+    public static final String notValidInRegex = "Email must be like: test@test.com";
+
 }

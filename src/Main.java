@@ -1,5 +1,7 @@
 import core.ServerDialogs;
+import core.dataBase.DataBaseServicesImpl;
 import core.messages.ServerOutMessages;
+import features.authFeat.models.UserModel;
 
 import java.util.Scanner;
 
@@ -8,8 +10,8 @@ public class Main {
 
      }
     static void register(){
-
-    }
+        UserModel userModel;
+     }
     static void startServer(){
         Scanner scanner = new Scanner(System.in);
         int dialogChoice;

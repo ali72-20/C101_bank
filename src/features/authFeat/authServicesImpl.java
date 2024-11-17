@@ -1,5 +1,11 @@
 package features.authFeat;
 
+import com.sun.tools.javac.Main;
+import core.ValidatorManager;
+import core.dataBase.DataBaseAccess;
+import core.dataBase.DataBaseServicesImpl;
+import features.authFeat.models.UserModel;
+
 public class authServicesImpl implements authServices{
     @Override
     public void login() {
@@ -7,8 +13,9 @@ public class authServicesImpl implements authServices{
     }
 
     @Override
-    public void register() {
-
+    public void register(UserModel userModel) {
+        ValidatorManager.isValidEmail(userModel.getEmail());
+        DataBaseAccess.dataBaseServices.addUser(userModel);
     }
 
     @Override
