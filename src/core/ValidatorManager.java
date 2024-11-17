@@ -12,6 +12,7 @@ public class ValidatorManager {
     private static boolean isInDataBase(String email){
          return DataBaseAccess.dataBaseServices.findUser(email);
     }
+
    public static boolean isValidEmail(String email){
         if(!isValidateEmailRegex(email)){
             ServerOutMessages.outInValidRegex();
