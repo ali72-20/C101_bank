@@ -15,6 +15,8 @@ public class authServicesImpl implements authServices{
     @Override
     public void register(UserModel userModel) {
         ValidatorManager.isValidEmail(userModel.getEmail());
+        ValidatorManager.isValidUserName(userModel.getUserName());
+        ValidatorManager.isValidPassword(userModel.getPassword());
         DataBaseAccess.dataBaseServices.addUser(userModel);
     }
 

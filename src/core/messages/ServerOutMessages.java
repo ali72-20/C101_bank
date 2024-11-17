@@ -23,4 +23,14 @@ public class ServerOutMessages{
     public static void outEmailIsValid(){
         System.out.println(ServerMessages.validEmail);
     }
+
+    public static void outPasswordLengthNotValid(){
+        System.out.println(ServerErrorMessages.passwordInValidLength);
+    }
+    public static void outPasswordNotMatchConfirmPassword(){
+        System.out.println(ServerErrorMessages.passwordNotMatch);
+    }
+    public static void outPasswordViolateRegex(){
+        System.out.println(ServerErrorMessages.passwordViolateRegex);
+    }
 }

@@ -21,4 +21,9 @@ class ServerErrorMessages {
     public static final String existInDataBase = "User already registered";
     public static final String notValidInRegex = "Email must be like: test@test.com";
 
+    public static final String passwordNotMatch = "Password not match confirm password";
+
+    public static final String passwordInValidLength = "Password must be more than 6 digits";
+    public static final String passwordViolateRegex = "Password must contains upper case and lower case letters, digits number, Sympoles\nTest@test11";
+
 }

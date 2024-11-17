@@ -19,9 +19,17 @@ public class DataBaseServicesImpl implements DataBaseServices {
     }
 
     @Override
-    public boolean findUser(String email) {
+    public boolean findUserByEmail(String email) {
         for(int i=0; i < users.size(); ++i){
             if(users.get(i).getEmail().equals(email)) return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean findUserByUserName(String userName) {
+        for(int i = 0; i < users.size(); ++i){
+            if(users.get(i).getUserName().equals(userName)) return true;
         }
         return false;
     }
