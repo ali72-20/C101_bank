@@ -8,6 +8,27 @@ import features.authFeat.models.UserModel;
 import java.util.Scanner;
 
 public class Main {
+
+    static void loginSuccess(){
+        Scanner scanner = new Scanner(System.in);
+        int choice;
+        while (true){
+            ServerDialogs.loginSuccessDialog();
+            choice = scanner.nextInt();
+            switch (choice) {
+                case 1:
+                    // have an account
+                    break;
+                case 2:
+                    // creat new account
+                case 3:
+                    ServerOutMessages.outExitServerMessage();
+                    return;
+                default:
+                    ServerOutMessages.outOfMenuChoiceError();
+            }
+        }
+    }
      static void login(){
          Scanner scanner = new Scanner(System.in);
 
@@ -18,7 +39,7 @@ public class Main {
          String password = scanner.next();
          LoginRequestLogin loginRequestLogin = new LoginRequestLogin(email,password);
          if(new AuthServicesImpl().login(loginRequestLogin)){
-             // new menu
+             loginSuccess();
          }
          return;
      }
@@ -53,9 +74,6 @@ public class Main {
              String password = scanner.next();
              ResetPasswordRequest resetPasswordRequest = new ResetPasswordRequest(email,password);
              new AuthServicesImpl().resetPassword(resetPasswordRequest);
-         }
-         else{
-             return;
          }
      }
     static void startServer(){

@@ -13,4 +13,9 @@ public class ServerDialogs {
          System.out.println("3- Forget password");
          System.out.println("4- Exit");
     }
+    public static void loginSuccessDialog(){
+        System.out.println("1- Have an account");
+        System.out.println("2- New user");
+        System.out.println("3- Exit");
+    }
 }
