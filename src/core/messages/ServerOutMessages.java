@@ -53,4 +53,7 @@ public class ServerOutMessages{
     public static void outRegisteredSuccess(){
         System.out.println(ServerMessages.registeredSuccess);
     }
+    public static void outUserAlreadyExist(){
+        System.out.println(ServerErrorMessages.userNameExist);
+    }
 }

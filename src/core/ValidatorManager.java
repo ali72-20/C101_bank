@@ -39,7 +39,12 @@ public class ValidatorManager {
      * @return true or false
      */
     public static boolean isValidUserName(String userName){
-        return !DataBaseAccess.dataBaseServices.findUserByUserName(userName);
+        boolean isExisted =  DataBaseAccess.dataBaseServices.findUserByUserName(userName);
+        if(isExisted){
+            ServerOutMessages.outUserAlreadyExist();
+            return false;
+        }
+        return true;
     }
 
 

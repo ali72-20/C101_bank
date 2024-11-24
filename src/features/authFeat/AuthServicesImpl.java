@@ -14,6 +14,7 @@ public class AuthServicesImpl implements authServices{
     @Override
     public void register(UserModel userModel, String passwordConfirm) {
         if (!ValidatorManager.isValidUserName(userModel.getUserName())) {
+
             return;
        }
        if(!ValidatorManager.isValidEmail(userModel.getEmail())){
