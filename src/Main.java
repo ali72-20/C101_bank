@@ -1,6 +1,6 @@
 import core.ServerDialogs;
-import core.dataBase.DataBaseServicesImpl;
 import core.messages.ServerOutMessages;
+import features.authFeat.AuthServicesImpl;
 import features.authFeat.models.UserModel;
 
 import java.util.Scanner;
@@ -10,8 +10,28 @@ public class Main {
 
      }
     static void register(){
-        UserModel userModel;
+         Scanner scanner = new Scanner(System.in);
+
+         ServerOutMessages.outEnterUserName();
+         String userName = scanner.next();
+
+         ServerOutMessages.outEnterEmail();
+         String email = scanner.next();
+
+         ServerOutMessages.outEnterPhoneNumber();
+         String phoneNumber = scanner.next();
+
+         ServerOutMessages.outEnterPassword();
+         String password = scanner.next();
+
+         ServerOutMessages.outEnterConfirmPassword();
+         String confirmPassword = scanner.next();
+
+         UserModel userModel = new UserModel(userName,email,phoneNumber,password);
+
+         new AuthServicesImpl().register(userModel,confirmPassword);
      }
+
     static void startServer(){
         Scanner scanner = new Scanner(System.in);
         int dialogChoice;

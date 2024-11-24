@@ -1,6 +1,7 @@
 package core.messages;
 
 
+import javax.print.attribute.standard.Severity;
 
 public class ServerOutMessages{
     private ServerOutMessages(){}
@@ -32,5 +33,21 @@ public class ServerOutMessages{
     }
     public static void outPasswordViolateRegex(){
         System.out.println(ServerErrorMessages.passwordViolateRegex);
+    }
+
+    public static void outEnterUserName(){
+        System.out.println(ServerMessages.enterUserName);
+    }
+    public static void outEnterEmail(){
+        System.out.println(ServerMessages.enterEmail);
+    }
+    public static void outEnterPassword(){
+        System.out.println(ServerMessages.enterPassword);
+    }
+    public static void outEnterConfirmPassword(){
+        System.out.println(ServerMessages.enterConfirmPassword);
+    }
+    public static void outEnterPhoneNumber(){
+        System.out.println(ServerMessages.enterPhoneNumber);
     }
 }

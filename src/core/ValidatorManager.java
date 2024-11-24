@@ -13,7 +13,6 @@ public class ValidatorManager {
          return DataBaseAccess.dataBaseServices.findUserByEmail(email);
     }
 
-
     /**
      * valid email according to
      * 1- Email regex
