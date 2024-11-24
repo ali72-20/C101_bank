@@ -1,15 +1,28 @@
 import core.ServerDialogs;
 import core.messages.ServerOutMessages;
 import features.authFeat.AuthServicesImpl;
+import features.authFeat.models.LoginRequestLogin;
+import features.authFeat.models.ResetPasswordRequest;
 import features.authFeat.models.UserModel;
 
 import java.util.Scanner;
 
 public class Main {
      static void login(){
+         Scanner scanner = new Scanner(System.in);
 
+         ServerOutMessages.outEnterEmail();
+         String email = scanner.next();
+
+         ServerOutMessages.outEnterPassword();
+         String password = scanner.next();
+         LoginRequestLogin loginRequestLogin = new LoginRequestLogin(email,password);
+         if(new AuthServicesImpl().login(loginRequestLogin)){
+             // new menu
+         }
+         return;
      }
-    static void register(){
+     static void register(){
          Scanner scanner = new Scanner(System.in);
 
          ServerOutMessages.outEnterUserName();
@@ -31,7 +44,20 @@ public class Main {
 
          new AuthServicesImpl().register(userModel,confirmPassword);
      }
-
+     static void forgetPassword(){
+         Scanner scanner = new Scanner(System.in);
+         ServerOutMessages.outEnterEmail();
+         String email = scanner.next();
+         if(new AuthServicesImpl().forgetPassword(email)) {
+             System.out.println("Enter new Password");
+             String password = scanner.next();
+             ResetPasswordRequest resetPasswordRequest = new ResetPasswordRequest(email,password);
+             new AuthServicesImpl().resetPassword(resetPasswordRequest);
+         }
+         else{
+             return;
+         }
+     }
     static void startServer(){
         Scanner scanner = new Scanner(System.in);
         int dialogChoice;
@@ -46,6 +72,9 @@ public class Main {
                     register();
                     break;
                 case 3:
+                    forgetPassword();
+                    break;
+                case 4:
                     ServerOutMessages.outExitServerMessage();
                     break;
                 default:

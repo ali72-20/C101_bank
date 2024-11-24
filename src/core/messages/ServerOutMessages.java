@@ -56,4 +56,11 @@ public class ServerOutMessages{
     public static void outUserAlreadyExist(){
         System.out.println(ServerErrorMessages.userNameExist);
     }
+
+    public static void outLoginFailed(){
+        System.out.println(ServerErrorMessages.loginFailed);
+    }
+    public static void outLoginSuccess(){
+        System.out.println(ServerMessages.loginSuccess);
+    }
 }

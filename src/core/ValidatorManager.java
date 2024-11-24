@@ -2,6 +2,7 @@ package core;
 
 import core.dataBase.DataBaseAccess;
 import core.messages.ServerOutMessages;
+import features.authFeat.models.LoginRequestLogin;
 
 public class ValidatorManager {
     private ValidatorManager(){}
@@ -10,7 +11,7 @@ public class ValidatorManager {
         return ServerRegex.isValidEmailRegex(email);
     }
     private static boolean isInDataBase(String email){
-         return !DataBaseAccess.dataBaseServices.findUserByEmail(email);
+         return DataBaseAccess.dataBaseServices.findUserByEmail(email);
     }
 
     /**
@@ -25,7 +26,7 @@ public class ValidatorManager {
             ServerOutMessages.outInValidRegex();
             return false;
         }
-        if(!isInDataBase(email)){
+        if(isInDataBase(email)){
             ServerOutMessages.outUserExistInDataBase();
             return false;
         }
@@ -39,7 +40,7 @@ public class ValidatorManager {
      * @return true or false
      */
     public static boolean isValidUserName(String userName){
-        boolean isExisted =  DataBaseAccess.dataBaseServices.findUserByUserName(userName);
+        boolean isExisted = DataBaseAccess.dataBaseServices.findUserByUserName(userName);
         if(isExisted){
             ServerOutMessages.outUserAlreadyExist();
             return false;
@@ -78,5 +79,18 @@ public class ValidatorManager {
 //            return false;
 //        }
         return true;
+    }
+
+    public static boolean isEmailWithPassword(LoginRequestLogin loginRequestLogin){
+        if(DataBaseAccess.dataBaseServices.isEmailWithPassword(loginRequestLogin)){
+            ServerOutMessages.outLoginSuccess();
+            return true;
+        }
+        ServerOutMessages.outLoginFailed();
+        return false;
+    }
+
+    public static boolean isExistedInDataBase(String email){
+        return isInDataBase(email);
     }
 }

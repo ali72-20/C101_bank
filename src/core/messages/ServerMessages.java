@@ -10,4 +10,5 @@ class ServerMessages {
         public static final String enterConfirmPassword = "Enter confirm password";
         public static final String enterPhoneNumber = "Enter phone number";
         public static final String registeredSuccess = "Registered success";
+        public static final String loginSuccess = "Welcome back";
 }

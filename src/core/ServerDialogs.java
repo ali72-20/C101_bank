@@ -10,6 +10,7 @@ public class ServerDialogs {
     public static void startDialog(){
          System.out.println("1- Login");
          System.out.println("2- Register");
-         System.out.println("3- Exit");
+         System.out.println("3- Forget password");
+         System.out.println("4- Exit");
     }
 }

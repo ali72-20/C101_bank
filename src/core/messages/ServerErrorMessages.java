@@ -27,4 +27,7 @@ class ServerErrorMessages {
     public static final String passwordViolateRegex = "Password must contains upper case and lower case letters, digits number, Sympoles\nTest@test11";
     public static final String userNameExist = "User name already exist";
 
+    public static final String notValidPhoneNumber = "Not valid phone number";
+    public static final String loginFailed = "Login failed, Incorrect email or password!";
+
 }
