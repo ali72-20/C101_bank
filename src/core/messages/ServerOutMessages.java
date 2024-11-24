@@ -50,4 +50,7 @@ public class ServerOutMessages{
     public static void outEnterPhoneNumber(){
         System.out.println(ServerMessages.enterPhoneNumber);
     }
+    public static void outRegisteredSuccess(){
+        System.out.println(ServerMessages.registeredSuccess);
+    }
 }

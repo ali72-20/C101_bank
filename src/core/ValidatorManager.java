@@ -10,7 +10,7 @@ public class ValidatorManager {
         return ServerRegex.isValidEmailRegex(email);
     }
     private static boolean isInDataBase(String email){
-         return DataBaseAccess.dataBaseServices.findUserByEmail(email);
+         return !DataBaseAccess.dataBaseServices.findUserByEmail(email);
     }
 
     /**
@@ -39,7 +39,7 @@ public class ValidatorManager {
      * @return true or false
      */
     public static boolean isValidUserName(String userName){
-        return DataBaseAccess.dataBaseServices.findUserByUserName(userName);
+        return !DataBaseAccess.dataBaseServices.findUserByUserName(userName);
     }
 
 
@@ -68,10 +68,10 @@ public class ValidatorManager {
             ServerOutMessages.outPasswordLengthNotValid();
             return false;
         }
-        if(!ServerRegex.isValidPasswordRegex(password)){
-            ServerOutMessages.outPasswordViolateRegex();
-            return false;
-        }
+//        if(!ServerRegex.isValidPasswordRegex(password)){
+//            ServerOutMessages.outPasswordViolateRegex();
+//            return false;
+//        }
         return true;
     }
 }
