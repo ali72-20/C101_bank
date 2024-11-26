@@ -15,33 +15,36 @@ public class Main {
 
     static void haveAccount(){
         Scanner scanner = new Scanner(System.in);
-        ServerDialogs.backServicesDialog();
-        int choice = scanner.nextInt();
         UserModel user = DataBaseAccess.dataBaseServices.getUserByEmail(CurrentLoggedUser.email);
         if(user.getAccount() == null){
             throw new NullPointerException("Account is null");
         }
-        switch (choice) {
-            case 1:
-                System.out.println("Your balance is: " + user.getAccount().getBalance());
-                break;
-            case 2:
-                System.out.println("Enter amount to withdraw");
-                double amount = scanner.nextDouble();
-                user.getAccount().withdraw(amount);
-                break;
-            case 3:
-                System.out.println("Enter amount to deposit");
-                double depositAmount = scanner.nextDouble();
-                user.getAccount().deposit(depositAmount);
-                break;
-            case 4:
-                user.getAccount().printInformation();
-                break;
-            case 5:
-                return;
-            default:
-                ServerOutMessages.outOfMenuChoiceError();
+        while(true) {
+            ServerDialogs.backServicesDialog();
+            int choice = scanner.nextInt();
+            switch (choice) {
+                case 1:
+                    System.out.println("Your balance is: " + user.getAccount().getBalance());
+                    break;
+                case 2:
+                    System.out.println("Enter amount to withdraw");
+                    double amount = scanner.nextDouble();
+                    user.getAccount().withdraw(amount);
+                    break;
+                case 3:
+                    System.out.println("Enter amount to deposit");
+                    double depositAmount = scanner.nextDouble();
+                    user.getAccount().deposit(depositAmount);
+                    break;
+                case 4:
+                    user.getAccount().printInformation();
+                    break;
+                case 5:
+                    ServerOutMessages.outExitServerMessage();
+                    return;
+                default:
+                    ServerOutMessages.outOfMenuChoiceError();
+            }
         }
     }
 
@@ -89,6 +92,7 @@ public class Main {
                     break;
                 case 2:
                     createAccount();
+                    break;
                 case 3:
                     ServerOutMessages.outExitServerMessage();
                     return;
