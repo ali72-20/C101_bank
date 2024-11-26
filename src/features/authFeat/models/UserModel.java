@@ -1,9 +1,13 @@
 package features.authFeat.models;
 
+import features.accountManagement.models.BaseAccount;
+
 public class UserModel {
     private String userName;
     private String email;
     private String phoneNumber;
+
+    private BaseAccount account;
 
     // مصيييييبة
     private String password;
@@ -45,5 +49,13 @@ public class UserModel {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public BaseAccount getAccount() {
+        return account;
+    }
+
+    public void setAccount(BaseAccount account) {
+        this.account = account;
     }
 }

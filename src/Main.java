@@ -9,6 +9,34 @@ import java.util.Scanner;
 
 public class Main {
 
+
+    static void haveAccount(){
+        Scanner scanner = new Scanner(System.in);
+        ServerDialogs.backServicesDialog();
+        int choice = scanner.nextInt();
+        switch (choice) {
+            case 1:
+                // check balance
+                break;
+            case 2:
+                // withdraw
+                break;
+            case 3:
+                // deposit
+                break;
+            case 4:
+                // print account details
+                break;
+            case 5:
+                return;
+            default:
+                ServerOutMessages.outOfMenuChoiceError();
+        }
+    }
+
+    static void createAccount(){
+
+    }
     static void loginSuccess(){
         Scanner scanner = new Scanner(System.in);
         int choice;
@@ -17,10 +45,10 @@ public class Main {
             choice = scanner.nextInt();
             switch (choice) {
                 case 1:
-                    // have an account
+                    haveAccount();
                     break;
                 case 2:
-                    // creat new account
+                    createAccount();
                 case 3:
                     ServerOutMessages.outExitServerMessage();
                     return;

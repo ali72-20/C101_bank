@@ -18,4 +18,12 @@ public class ServerDialogs {
         System.out.println("2- New user");
         System.out.println("3- Exit");
     }
+
+    public static void backServicesDialog(){
+        System.out.println("1- check balance");
+        System.out.println("2- withdraw");
+        System.out.println("3- deposit");
+        System.out.println("4- print account details");
+        System.out.println("5- Exit");
+    }
 }
