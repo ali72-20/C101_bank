@@ -1,18 +1,21 @@
 package features.accountManagement.models;
 
 public class BaseAccount {
-    private String id;
+    private static int genId = 0;
+    private static int genAccountNumber = 100;
+    private  String id;
     private double balance;
     private String accountType;
     private String accountNumber;
     private String accountHolderName;
 
-    public BaseAccount(String id, double balance, String accountType, String accountNumber, String accountHolderName) {
-        this.id = id;
+    public BaseAccount( double balance, String accountType ,String accountHolderName) {
+
         this.balance = balance;
         this.accountType = accountType;
-        this.accountNumber = accountNumber;
         this.accountHolderName = accountHolderName;
+        this.id = (++genId) + "";
+        this.accountNumber = (++genAccountNumber) + "";
     }
 
     public String getId() {
@@ -51,6 +54,12 @@ public class BaseAccount {
         return accountHolderName;
     }
 
+    public void printInformation(){
+        System.out.println("Account Number: " + accountNumber);
+        System.out.println("Account Holder Name: " + accountHolderName);
+        System.out.println("Account Type: " + accountType);
+        System.out.println("Balance: " + balance);
+    }
     public void setAccountHolderName(String accountHolderName) {
         this.accountHolderName = accountHolderName;
     }

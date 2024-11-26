@@ -2,8 +2,8 @@ package features.accountManagement.models;
 
 public class SavedBankAccount extends BaseAccount{
 
-    public SavedBankAccount(String id, double balance, String accountType, String accountNumber, String accountHolderName) {
-        super(id, balance, accountType, accountNumber, accountHolderName);
+    public SavedBankAccount( double balance, String accountType, String accountHolderName) {
+        super(balance, accountType, accountHolderName);
     }
 
 

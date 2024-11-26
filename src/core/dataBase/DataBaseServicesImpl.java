@@ -56,4 +56,14 @@ public class DataBaseServicesImpl implements DataBaseServices {
         }
         return false;
     }
+
+    @Override
+    public UserModel getUserByEmail(String email) {
+        for(int i = 0; i < users.size(); ++i){
+            if(users.get(i).getEmail().equals(email)){
+                return users.get(i);
+            }
+        }
+        return null;
+    }
 }

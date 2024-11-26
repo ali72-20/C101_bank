@@ -1,31 +1,42 @@
 import core.ServerDialogs;
+import core.dataBase.DataBaseAccess;
 import core.messages.ServerOutMessages;
+import features.accountManagement.models.BaseAccount;
+import features.accountManagement.models.CurrentLoggedUser;
+import features.accountManagement.models.PrePaidAccount;
+import features.accountManagement.models.SavedBankAccount;
 import features.authFeat.AuthServicesImpl;
 import features.authFeat.models.LoginRequestLogin;
 import features.authFeat.models.ResetPasswordRequest;
 import features.authFeat.models.UserModel;
-
 import java.util.Scanner;
 
 public class Main {
-
 
     static void haveAccount(){
         Scanner scanner = new Scanner(System.in);
         ServerDialogs.backServicesDialog();
         int choice = scanner.nextInt();
+        UserModel user = DataBaseAccess.dataBaseServices.getUserByEmail(CurrentLoggedUser.email);
+        if(user.getAccount() == null){
+            throw new NullPointerException("Account is null");
+        }
         switch (choice) {
             case 1:
-                // check balance
+                System.out.println("Your balance is: " + user.getAccount().getBalance());
                 break;
             case 2:
-                // withdraw
+                System.out.println("Enter amount to withdraw");
+                double amount = scanner.nextDouble();
+                user.getAccount().withdraw(amount);
                 break;
             case 3:
-                // deposit
+                System.out.println("Enter amount to deposit");
+                double depositAmount = scanner.nextDouble();
+                user.getAccount().deposit(depositAmount);
                 break;
             case 4:
-                // print account details
+                user.getAccount().printInformation();
                 break;
             case 5:
                 return;
@@ -34,8 +45,37 @@ public class Main {
         }
     }
 
+    static double enterBalance(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter balance");
+        return scanner.nextDouble();
+    }
     static void createAccount(){
-
+        BaseAccount baseAccount = null;
+        Scanner scanner = new Scanner(System.in);
+        ServerDialogs.accountTypesDialogs();
+        int choice = scanner.nextInt();
+        boolean isDone = false;
+        while(!isDone) {
+            switch (choice) {
+                case 1:
+                    baseAccount = new BaseAccount(enterBalance(), "base",  CurrentLoggedUser.email);
+                    isDone = true;
+                    break;
+                case 2:
+                    baseAccount = new PrePaidAccount( enterBalance(), "PrePaid", CurrentLoggedUser.email);
+                    isDone = true;
+                    break;
+                case 3:
+                    baseAccount = new SavedBankAccount(enterBalance(), "Saved ", CurrentLoggedUser.email);
+                    isDone = true;
+                    break;
+                default:
+                    ServerOutMessages.outOfMenuChoiceError();
+            }
+        }
+        UserModel userModel = DataBaseAccess.dataBaseServices.getUserByEmail(CurrentLoggedUser.email);
+        userModel.setAccount(baseAccount);
     }
     static void loginSuccess(){
         Scanner scanner = new Scanner(System.in);
@@ -67,9 +107,9 @@ public class Main {
          String password = scanner.next();
          LoginRequestLogin loginRequestLogin = new LoginRequestLogin(email,password);
          if(new AuthServicesImpl().login(loginRequestLogin)){
+             CurrentLoggedUser.email = email;
              loginSuccess();
          }
-         return;
      }
      static void register(){
          Scanner scanner = new Scanner(System.in);

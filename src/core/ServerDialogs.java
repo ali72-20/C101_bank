@@ -26,4 +26,9 @@ public class ServerDialogs {
         System.out.println("4- print account details");
         System.out.println("5- Exit");
     }
+    public static void accountTypesDialogs(){
+        System.out.println("1- base account");
+        System.out.println("2- pre paid account");
+        System.out.println("3- saved bank account");
+    }
 }

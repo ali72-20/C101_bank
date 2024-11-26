@@ -12,4 +12,6 @@ public interface DataBaseServices {
     boolean isEmailWithPassword(LoginRequestLogin loginRequestLogin);
     boolean resetPassword(ResetPasswordRequest resetPasswordRequest);
 
+    UserModel getUserByEmail(String email);
+
 }

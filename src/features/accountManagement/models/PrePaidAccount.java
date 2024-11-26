@@ -2,8 +2,8 @@ package features.accountManagement.models;
 
 public class PrePaidAccount extends BaseAccount{
 
-    public PrePaidAccount(String id, double balance, String accountType, String accountNumber, String accountHolderName) {
-        super(id, balance, accountType, accountNumber, accountHolderName);
+    public PrePaidAccount( double balance, String accountType, String accountHolderName) {
+        super( balance, accountType, accountHolderName);
     }
 
     @Override
